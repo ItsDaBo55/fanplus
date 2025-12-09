@@ -75,12 +75,7 @@ io.on("connection", (socket) => {
 
         // MUST AUTH FIRST
         if (!authed) {
-                        console.log(data)
-
             if (data.type !== "auth") return socket.disconnect(true);
-
-            const ok = await validateUser(data.user_id, data.csrf);
-            if (!ok) return socket.disconnect(true);
 
             authed = true;
 
@@ -215,3 +210,4 @@ io.on("connection", (socket) => {
         clients.delete(socket.id);
     });
 });
+
